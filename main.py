@@ -1,16 +1,40 @@
-# This is a sample Python script.
+# import libs and modules
+import click
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from src.calculator import NumCalculator
+from src.fcalc import Fcalc
 
+# create command's group
+@click.group
+def app_commands():
+    pass
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# # binary search algorithm command
+# @click.command(help="binary search algorithm")
+# @click.option(
+#     "--mx",
+#     type=int,
+#     prompt="Hello!"
+#            "\nI'm the binary search algorithm"
+#            "\nI'll find the index of item you want very fast"
+#            "\n\nEnter the maximum number of sorted array",
+#     help="You have to enter max value of list"
+# )
+# @click.option(
+#     "--find",
+#     type=int,
+#     prompt="Enter the digit we want to find",
+#     help="You have to enter the value what index you want to find"
+# )
+# def bs(mx, find):
+#     my_list = [n for n in range(1, mx + 1)]
+#     click.echo(f"\nWe have a  sorted list from 0 to {mx}")
+#     position = PositionFinder()
+#     click.echo(f"\nFIND!!!\n{position.bin_search(my_list, find)} is position of {find}")
+#
+# # adding commands into group
+# app_commands.add_command(bf)
+# app_commands.add_command(bs)
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    app_commands()
