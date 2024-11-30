@@ -1,0 +1,5 @@
+trycode.py
+temp.py
+.venv/
+.idea/
+__pycache__/
