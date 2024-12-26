@@ -1,6 +1,7 @@
 import requests
 from dataclasses import dataclass
 
+
 @dataclass()
 class Blog:
     name: str
