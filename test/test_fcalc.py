@@ -1,16 +1,14 @@
 import unittest
+from unittest.mock import patch
 from src.fcalc import Fcalc
 
-#test for calculating
 class FCalcTest(unittest.TestCase):
 #create tests case fixture
     def setUp(self):
         self.result = Fcalc()
-        print("\nstart FCalcTest")
-
     def tearDown(self):
         self.result = None
-        print("stop FCalcTest")
+
 #test cases
     def test_num10(self):
         self.assertEqual(self.result.factor(10), 3628800)
@@ -27,18 +25,11 @@ class FCalcTest(unittest.TestCase):
     @unittest.skip("demonstrating skipping")
     def test_nothing(self):
         pass
-
+#mocking plus
+    @patch("src.fcalc.Fcalc.factor", return_value=479001600)
+    def test_fcalc_mock(self, factor):
+        self.assertEqual(factor(12), 479001600)
 #test for errors and raises
-class FErrorTest(unittest.TestCase):
-#create tests case fixture
-    def setUp(self):
-        self.result = Fcalc()
-        print("\nstart FErrorTest")
-
-    def tearDown(self):
-        self.result = None
-        print("Stop FErrorTest")
-#test cases
     def test_string_type(self):
         with self.assertRaises(TypeError):
             self.result.factor("1")

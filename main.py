@@ -3,6 +3,7 @@ import click
 
 from src.calculator import NumCalculator
 from src.fcalc import Fcalc
+from src.blog import Blog
 
 
 # create command's group
@@ -138,6 +139,22 @@ def fc(x):
     result = Fcalc()
     click.echo(f"\nFactorial of {x}  = {result.factor(x)}")
 
+#blog command
+@click.command(help="Get blog texts from API-generator")
+@click.option(
+    "--name",
+    type=str,
+    prompt="Enter your user name",
+    help="You have to enter the user name"
+)
+
+def blog(name):
+    res = Blog(name)
+    click.echo(f"User name:{res}")
+    data = res.posts()
+    for post in data:
+        for key in post:
+            print(key, ":", post[key])
 
 # adding commands into group
 app_commands.add_command(sm)
@@ -147,6 +164,7 @@ app_commands.add_command(dv)
 app_commands.add_command(fdv)
 app_commands.add_command(edv)
 app_commands.add_command(fc)
+app_commands.add_command(blog)
 
 
 if __name__ == '__main__':
